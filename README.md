@@ -15,13 +15,13 @@ const query = 'harry potter';
 fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
 ```
 
-**NOTE:** You can use the form of calling apis of your choice (Fetch, Axios, etc).  
+**NOTE:** You can use the form of calling apis of your choice (Fetch, Axios, etc).
 
 ## Design/Screens
+
 https://www.figma.com/file/KFElqzD983WNyvMY1SaF0c/book-app?node-id=0%3A1
 
 <img width="581" alt="Screen Shot 2021-04-13 at 10 19 47" src="https://user-images.githubusercontent.com/13947203/114559257-eb55ad00-9c41-11eb-9617-4e7627cc373e.png">
-
 
 The website design has 3 screens, which are:
 
@@ -45,25 +45,25 @@ In this screen the functionalities below are **mandatory**:
 
 1. See all information for the selected book.
 
-- [ ] Project setup
-  - [x] Eslint/Prettier setup
-  - [x] Commitlint setup
-  - [x] Typescript setup
-  - [x] React setup
-  - [x] Style setup
-    - [ ] Theme setup
-  - [ ] Routes setup
-    - [ ] Navigation component
-- [ ] Basic components
-- [ ] Homepage
-  - [ ] Search input
-  - [ ] Discover new book section
-  - [ ] Currently Reading section
-  - [ ] Reviews of The Days section 
-- [ ] Search page
-  - [ ] Fetch API
-  - [ ] Load more button
-- [ ] Detail page
-  - [ ] Secondary navigation component
-  - [ ] Book detail section
-- [ ] PWA setup
+-   [ ] Project setup
+    -   [x] Eslint/Prettier setup
+    -   [x] Commitlint setup
+    -   [x] Typescript setup
+    -   [x] React setup
+    -   [x] Style setup
+        -   [x] Theme setup
+    -   [ ] Routes setup
+        -   [ ] Navigation component
+-   [ ] Basic components
+-   [ ] Homepage
+    -   [ ] Search input
+    -   [ ] Discover new book section
+    -   [ ] Currently Reading section
+    -   [ ] Reviews of The Days section
+-   [ ] Search page
+    -   [ ] Fetch API
+    -   [ ] Load more button
+-   [ ] Detail page
+    -   [ ] Secondary navigation component
+    -   [ ] Book detail section
+-   [ ] PWA setup

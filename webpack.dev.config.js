@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
 
 const config = {
@@ -49,6 +50,17 @@ const config = {
         new HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'public/index.html'),
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: 'public',
+                    to: '../dist/',
+                    globOptions: {
+                        ignore: ['**/*.html'],
+                    },
+                },
+            ],
         }),
     ],
     devtool: 'inline-source-map',

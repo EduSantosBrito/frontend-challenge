@@ -52,7 +52,7 @@ In this screen the functionalities below are **mandatory**:
     -   [x] React setup
     -   [x] Style setup
         -   [x] Theme setup
-    -   [ ] Routes setup
+    -   [x] Routes setup
         -   [ ] Navigation component
 -   [ ] Basic components
 -   [ ] Homepage

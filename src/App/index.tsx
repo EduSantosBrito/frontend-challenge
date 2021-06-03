@@ -1,49 +1,44 @@
 import { createGlobalStyle, DefaultTheme, ThemeProvider } from 'styled-components';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+
+const Home = lazy(() => import('../pages/Home'));
+const Detail = lazy(() => import('../pages/Detail'));
+const Search = lazy(() => import('../pages/Search'));
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'SF Pro Display';
         font-weight: 400;
-        src: 
-            url('/fonts/SF-Pro-Display-400.woff2') format('woff2'),
-            url('/fonts/SF-Pro-Display-400.woff') format('woff');
+        src: url('/fonts/SF-Pro-Display-400.woff2') format('woff2');
     }
     @font-face {
         font-family: 'SF Pro Display';
         font-weight: 400;
         font-style: italic;
-        src: 
-            url('/fonts/SF-Pro-Display-400-Italic.woff2') format('woff2'),
-            url('/fonts/SF-Pro-Display-400-Italic.woff') format('woff');
+        src: url('/fonts/SF-Pro-Display-400-Italic.woff2') format('woff2');
     }
     @font-face {
         font-family: 'SF Pro Display';
         font-weight: 600;
-        src: 
-            url('/fonts/SF-Pro-Display-600.woff2') format('woff2'),
-            url('/fonts/SF-Pro-Display-600.woff') format('woff');
+        src: url('/fonts/SF-Pro-Display-600.woff2') format('woff2');
     }
     @font-face {
         font-family: 'SF Pro Display';
         font-weight: 700;
-        src: 
-            url('/fonts/SF-Pro-Display-700.woff2') format('woff2'),
-            url('/fonts/SF-Pro-Display-700.woff') format('woff');
+        src: url('/fonts/SF-Pro-Display-700.woff2') format('woff2');
 
     }
     @font-face {
         font-family: 'SF Pro Text';
         font-weight: 400;
-        src: 
-            url('/fonts/SF-Pro-Text-400.woff2') format('woff2'),
-            url('/fonts/SF-Pro-Text-400.woff') format('woff');
+        src: url('/fonts/SF-Pro-Text-400.woff2') format('woff2');
     }
     @font-face {
         font-family: 'Playfair Display';
         font-weight: 700;
-        src: 
-            url('/fonts/Playfair-Display-700.woff2') format('woff2'),
-            url('/fonts/Playfair-Display-700.woff') format('woff');
+        src: url('/fonts/Playfair-Display-700.woff2') format('woff2');
+            
     }
     font-size: 16px;
 `;
@@ -113,6 +108,21 @@ const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyle />
+            <Suspense fallback={<div>Loading...</div>}>
+                <Router>
+                    <Switch>
+                        <Route exact path='/'>
+                            <Home />
+                        </Route>
+                        <Route path='/detail'>
+                            <Detail />
+                        </Route>
+                        <Route path='/search'>
+                            <Search />
+                        </Route>
+                    </Switch>
+                </Router>
+            </Suspense>
         </ThemeProvider>
     );
 };

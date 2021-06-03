@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
 
-const Container = styled.div`
-    background-color: blue;
-`;
+const theme: DefaultTheme = {
+    blue: 'blue',
+};
 
 const App = () => {
-    return <Container>teste</Container>;
+    return <ThemeProvider theme={theme}>teste</ThemeProvider>;
 };
 
 export default App;

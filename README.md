@@ -44,3 +44,26 @@ In this screen the functionalities below are **mandatory**:
 In this screen the functionalities below are **mandatory**:
 
 1. See all information for the selected book.
+
+- [ ] Project setup
+  - [x] Eslint/Prettier setup
+  - [x] Commitlint setup
+  - [x] Typescript setup
+  - [x] React setup
+  - [x] Style setup
+    - [ ] Theme setup
+  - [ ] Routes setup
+    - [ ] Navigation component
+- [ ] Basic components
+- [ ] Homepage
+  - [ ] Search input
+  - [ ] Discover new book section
+  - [ ] Currently Reading section
+  - [ ] Reviews of The Days section 
+- [ ] Search page
+  - [ ] Fetch API
+  - [ ] Load more button
+- [ ] Detail page
+  - [ ] Secondary navigation component
+  - [ ] Book detail section
+- [ ] PWA setup

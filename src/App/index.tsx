@@ -1,5 +1,11 @@
+import styled from 'styled-components';
+
+const Container = styled.div`
+    background-color: blue;
+`;
+
 const App = () => {
-    return <div>teste</div>;
+    return <Container>teste</Container>;
 };
 
 export default App;

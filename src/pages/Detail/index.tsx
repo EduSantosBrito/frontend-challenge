@@ -1,18 +1,37 @@
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-
-const Title = styled.h1`
-    font-family: ${({ theme }) => theme.fonts.family.author};
-    font-size: ${({ theme }) => theme.fonts.size.title.default};
-    color: ${({ theme }) => theme.palette.gray[400]};
-`;
+import Navbar from '../../components/Navbar';
 
 const Detail = () => {
     return (
         <div>
-            <Title>Detail</Title>
             <Link to='/'>Home</Link>
             <Link to='/search'>Search</Link>
+            <Navbar
+                variant='floated'
+                items={[
+                    {
+                        iconName: 'read',
+                        label: 'Read',
+                        onClick: () => {
+                            console.log('read');
+                        },
+                    },
+                    {
+                        iconName: 'listen',
+                        label: 'Listen',
+                        onClick: () => {
+                            console.log('listen');
+                        },
+                    },
+                    {
+                        iconName: 'share',
+                        label: 'Share',
+                        onClick: () => {
+                            console.log('share');
+                        },
+                    },
+                ]}
+            />
         </div>
     );
 };

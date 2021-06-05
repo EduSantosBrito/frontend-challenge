@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
+const DotenvWebpackPlugin = require('dotenv-webpack');
 
 const config = {
     mode: 'development',
@@ -13,6 +14,10 @@ const config = {
     entry: './src/index.tsx',
     module: {
         rules: [
+            {
+                test: /\.svg$/i,
+                use: ['@svgr/webpack'],
+            },
             {
                 test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
@@ -44,9 +49,13 @@ const config = {
         ],
     },
     resolve: {
+        alias: {
+            icons: path.resolve(__dirname, './public/icons'),
+        },
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     plugins: [
+        new DotenvWebpackPlugin(),
         new HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'public/index.html'),

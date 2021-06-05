@@ -53,7 +53,7 @@ In this screen the functionalities below are **mandatory**:
     -   [x] Style setup
         -   [x] Theme setup
     -   [x] Routes setup
-        -   [ ] Navigation component
+        -   [x] Navigation component
 -   [ ] Basic components
 -   [ ] Homepage
     -   [ ] Search input

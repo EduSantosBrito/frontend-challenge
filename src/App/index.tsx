@@ -1,6 +1,7 @@
 import { createGlobalStyle, DefaultTheme, ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import NavbarRoute from '../components/NavbarRoute';
 
 const Home = lazy(() => import('../pages/Home'));
 const Detail = lazy(() => import('../pages/Detail'));
@@ -40,7 +41,14 @@ const GlobalStyle = createGlobalStyle`
         src: url('/fonts/Playfair-Display-700.woff2') format('woff2');
             
     }
-    font-size: 16px;
+    html, body {
+        background-color: ${({ theme }) => theme.palette.yellow[100]};
+        font-size: 16px;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
 `;
 
 const theme: DefaultTheme = {
@@ -56,6 +64,7 @@ const theme: DefaultTheme = {
             subtitle: 'SF Pro Display, sans-serif',
             author: 'SF Pro Display, sans-serif',
             book: 'Playfair Display, sans-serif',
+            link: 'SF Pro Display, sans-serif',
         },
         size: {
             title: {
@@ -73,6 +82,10 @@ const theme: DefaultTheme = {
             book: {
                 default: '1.6875rem',
                 small: '1.25rem',
+            },
+            link: {
+                default: '0.875rem',
+                small: '0.625rem',
             },
         },
     },
@@ -96,12 +109,14 @@ const theme: DefaultTheme = {
         },
         gray: {
             100: '#CFCBD2',
-            200: '#A2A09F',
-            300: '#838281',
-            400: '#36383A',
+            200: '#BFBEBF',
+            300: '#A2A09F',
+            400: '#838281',
+            500: '#36383A',
         },
         white: '#FEFEFE',
     },
+    shadow: '3px 3px 23px #D6D5D1;',
 };
 
 const App = () => {
@@ -112,13 +127,17 @@ const App = () => {
                 <Router>
                     <Switch>
                         <Route exact path='/'>
-                            <Home />
+                            <NavbarRoute>
+                                <Home />
+                            </NavbarRoute>
                         </Route>
                         <Route path='/detail'>
                             <Detail />
                         </Route>
                         <Route path='/search'>
-                            <Search />
+                            <NavbarRoute>
+                                <Search />
+                            </NavbarRoute>
                         </Route>
                     </Switch>
                 </Router>

@@ -25,6 +25,10 @@
         "react/react-in-jsx-scope": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
         "import/extensions": "off",
-        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+        "react/prop-types": "off",
+        "react/require-default-props": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": ["error"]
     }
 }

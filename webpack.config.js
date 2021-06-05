@@ -4,6 +4,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const DotenvWebpackPlugin = require('dotenv-webpack');
 
 const config = {
     mode: 'production',
@@ -78,14 +79,13 @@ const config = {
         // module chunks which are built will work in web workers as well.
         globalObject: 'this',
     },
-    // output: {
-    //     path: path.resolve(__dirname, 'dist'),
-    //     filename: 'bundle.[contenthash].js',
-    //     publicPath: '/',
-    // },
     entry: './src/index.tsx',
     module: {
         rules: [
+            {
+                test: /\.svg$/i,
+                use: ['@svgr/webpack'],
+            },
             {
                 test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
@@ -117,9 +117,13 @@ const config = {
         ],
     },
     resolve: {
+        alias: {
+            icons: path.resolve(__dirname, './dist/icons'),
+        },
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     plugins: [
+        new DotenvWebpackPlugin(),
         new HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'public/index.html'),
@@ -146,7 +150,7 @@ const config = {
                     from: 'public',
                     to: '../dist/',
                     globOptions: {
-                        ignore: ['**/*.html'],
+                        ignore: ['**/*.html', '**/icons/'],
                     },
                 },
             ],

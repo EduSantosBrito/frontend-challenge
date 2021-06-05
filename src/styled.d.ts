@@ -5,6 +5,7 @@ interface FontTypes {
     subtitle: string;
     book: string;
     author: string;
+    link: string;
 }
 interface Sizes {
     small: string;
@@ -15,6 +16,7 @@ interface FontTypesSize {
     subtitle: Sizes;
     book: Sizes;
     author: Sizes;
+    link: Sizes;
 }
 
 interface ColorIntensity {
@@ -50,5 +52,6 @@ declare module 'styled-components' {
             gray: ColorIntensity;
             white: string;
         };
+        shadow: string;
     }
 }

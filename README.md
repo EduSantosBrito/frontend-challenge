@@ -45,7 +45,7 @@ In this screen the functionalities below are **mandatory**:
 
 1. See all information for the selected book.
 
--   [ ] Project setup
+-   [x] Project setup
     -   [x] Eslint/Prettier setup
     -   [x] Commitlint setup
     -   [x] Typescript setup

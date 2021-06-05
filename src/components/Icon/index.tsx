@@ -1,7 +1,7 @@
 import { FunctionComponent, SVGAttributes, useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-export type Icons = 'home' | 'book' | 'profile' | 'listen' | 'read' | 'share';
+export type Icons = 'home' | 'book' | 'profile' | 'listen' | 'read' | 'share' | 'search';
 
 type IconProps = {
     name: Icons;
@@ -9,6 +9,9 @@ type IconProps = {
 };
 
 const IconContainer = styled.div<{ active: boolean }>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     > svg {
         width: 1.5rem;
         color: ${({ active, theme }) => theme.palette.gray[active ? 500 : 200]};

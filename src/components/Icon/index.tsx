@@ -36,7 +36,11 @@ const Icon = ({ name, active }: IconProps) => {
     }, [getIcon]);
 
     if (!iconModule) {
-        return null;
+        return (
+            <IconContainer active={active}>
+                <svg />
+            </IconContainer>
+        );
     }
 
     const IconComponent = iconModule.default;

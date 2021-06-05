@@ -21,6 +21,11 @@ const GlobalStyle = createGlobalStyle`
     }
     @font-face {
         font-family: 'SF Pro Display';
+        font-weight: 500;
+        src: url('/fonts/SF-Pro-Display-500.woff2') format('woff2');
+    }
+    @font-face {
+        font-family: 'SF Pro Display';
         font-weight: 600;
         src: url('/fonts/SF-Pro-Display-600.woff2') format('woff2');
     }
@@ -72,7 +77,7 @@ const theme: DefaultTheme = {
                 small: '1.125rem',
             },
             subtitle: {
-                default: '1rem',
+                default: '1.125rem',
                 small: '0.75rem',
             },
             author: {

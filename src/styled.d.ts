@@ -6,6 +6,7 @@ interface FontTypes {
     book: string;
     author: string;
     link: string;
+    navItem: string;
 }
 interface Sizes {
     small: string;
@@ -17,6 +18,7 @@ interface FontTypesSize {
     book: Sizes;
     author: Sizes;
     link: Sizes;
+    navItem: Sizes;
 }
 
 interface ColorIntensity {

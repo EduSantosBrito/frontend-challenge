@@ -69,7 +69,8 @@ const theme: DefaultTheme = {
             subtitle: 'SF Pro Display, sans-serif',
             author: 'SF Pro Display, sans-serif',
             book: 'Playfair Display, sans-serif',
-            link: 'SF Pro Display, sans-serif',
+            link: 'SF Pro Text, sans-serif',
+            navItem: 'SF Pro Display, sans-serif',
         },
         size: {
             title: {
@@ -89,6 +90,10 @@ const theme: DefaultTheme = {
                 small: '1.25rem',
             },
             link: {
+                default: '0.875rem',
+                small: '0.625rem',
+            },
+            navItem: {
                 default: '0.875rem',
                 small: '0.625rem',
             },

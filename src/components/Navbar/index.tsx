@@ -1,5 +1,6 @@
 import { Link as ReactLink, useLocation } from 'react-router-dom';
-import styled, { DefaultTheme, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { VariantPropertiesType } from '../../utils/VariantProperties';
 import Icon, { Icons } from '../Icon';
 
 type WithRedirect<T> = T & { to: string };
@@ -11,12 +12,12 @@ type DefaultItemProps = {
 
 type NavbarItem = WithRedirect<DefaultItemProps> | WithOnClick<DefaultItemProps>;
 
+type Variants = 'fixed' | 'floated';
+
 type NavbarProps = {
     items: NavbarItem[];
-    variant?: 'fixed' | 'floated';
+    variant?: Variants;
 };
-
-type VariantPropertiesType = (theme: DefaultTheme) => Record<string, Record<'fixed' | 'floated', number | string>>;
 
 const slideUp = keyframes`
   from {
@@ -28,7 +29,7 @@ const slideUp = keyframes`
   }
 `;
 
-const getContainerVariantProperties: VariantPropertiesType = theme => ({
+const getContainerVariantProperties: VariantPropertiesType<Variants> = theme => ({
     width: {
         fixed: '100%',
         floated: 'calc(100% - 2rem)',
@@ -55,7 +56,7 @@ const getContainerVariantProperties: VariantPropertiesType = theme => ({
     },
 });
 
-const Container = styled.div<{ variant: 'fixed' | 'floated' }>`
+const Container = styled.div<{ variant: Variants }>`
     height: 3.75rem;
     width: ${({ variant, theme }) => getContainerVariantProperties(theme).width[variant]};
     position: fixed;
@@ -72,7 +73,7 @@ const Container = styled.div<{ variant: 'fixed' | 'floated' }>`
     animation: ${slideUp} 300ms linear forwards;
 `;
 
-const getLinkVariantProperties: VariantPropertiesType = () => ({
+const getLinkVariantProperties: VariantPropertiesType<Variants> = () => ({
     'flex-direction': {
         fixed: 'column',
         floated: 'flow',
@@ -83,7 +84,7 @@ const getLinkVariantProperties: VariantPropertiesType = () => ({
     },
 });
 
-const Link = styled(ReactLink)<{ variant: 'fixed' | 'floated' }>`
+const Link = styled(ReactLink)<{ variant: Variants }>`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,7 +94,7 @@ const Link = styled(ReactLink)<{ variant: 'fixed' | 'floated' }>`
     color: inherit;
 `;
 
-const Button = styled.button<{ variant: 'fixed' | 'floated' }>`
+const Button = styled.button<{ variant: Variants }>`
     appearance: none;
     border: none;
     background-color: transparent;
@@ -105,19 +106,19 @@ const Button = styled.button<{ variant: 'fixed' | 'floated' }>`
     color: inherit;
 `;
 
-const getLinkLabelVariantProperties: VariantPropertiesType = theme => ({
+const getLinkLabelVariantProperties: VariantPropertiesType<Variants> = theme => ({
     'font-weight': {
         fixed: 400,
         floated: 700,
     },
     'font-size': {
-        fixed: theme.fonts.size.link.small,
-        floated: theme.fonts.size.link.default,
+        fixed: theme.fonts.size.navItem.small,
+        floated: theme.fonts.size.navItem.default,
     },
 });
 
-const LinkLabel = styled.p<{ active: boolean; variant: 'fixed' | 'floated' }>`
-    font-family: ${({ theme }) => theme.fonts.family.link};
+const LinkLabel = styled.p<{ active: boolean; variant: Variants }>`
+    font-family: ${({ theme }) => theme.fonts.family.navItem};
     font-weight: ${({ variant, theme }) => getLinkLabelVariantProperties(theme)['font-weight'][variant]};
     font-size: ${({ variant, theme }) => getLinkLabelVariantProperties(theme)['font-size'][variant]};
     margin: 0;
@@ -159,7 +160,7 @@ const Navbar = ({ items, variant = 'fixed' }: NavbarProps) => {
                 return (
                     <>
                         <Button variant={variant} key={item.label} onClick={itemWithOnClick.onClick}>
-                            <Icon active={false} name={item.iconName} />
+                            <Icon name={item.iconName} />
                             <LinkLabel variant={variant} active={variant === 'floated'}>
                                 {item.label}
                             </LinkLabel>

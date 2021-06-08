@@ -12,15 +12,15 @@ type TextInputProps = {
 
 const Container = styled.div<{ withIcon: boolean }>`
     position: relative;
-    padding: 1rem;
-    width: calc(100% - 2rem);
+    padding: 1rem 0;
+    width: 100%;
     display: flex;
     justify-content: stretch;
 `;
 
 const IconContainer = styled.label`
     position: absolute;
-    left: 1.5rem;
+    left: 0.5rem;
     top: 50%;
     transform: translateY(-50%);
 `;
@@ -30,7 +30,6 @@ const Input = styled.input`
     padding: 1rem 2.5rem;
     background-color: ${({ theme }) => theme.palette.white};
     border-radius: 0.5rem;
-    box-shadow: ${({ theme }) => theme.shadow};
     width: 100%;
 `;
 
@@ -39,10 +38,10 @@ const TextInput = ({ name, value, onChange, placeholder, icon }: TextInputProps)
         <Container withIcon={!!icon}>
             {icon && (
                 <IconContainer htmlFor={name}>
-                    <Icon name={icon} active={false} />
+                    <Icon name={icon} />
                 </IconContainer>
             )}
-            <Input id={name} name={name} value={value} onChange={onChange} placeholder={placeholder} />
+            <Input type='text' id={name} name={name} value={value} onChange={onChange} placeholder={placeholder} />
         </Container>
     );
 };

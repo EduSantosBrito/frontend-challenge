@@ -1,25 +1,26 @@
 import { FunctionComponent, SVGAttributes, useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-export type Icons = 'home' | 'book' | 'profile' | 'listen' | 'read' | 'share' | 'search';
+export type Icons = 'home' | 'book' | 'profile' | 'listen' | 'read' | 'share' | 'search' | 'active-users' | 'chapter';
 
 type IconProps = {
     name: Icons;
-    active: boolean;
+    active?: boolean;
+    small?: boolean;
 };
 
-const IconContainer = styled.div<{ active: boolean }>`
+const IconContainer = styled.div<{ active: boolean; small: boolean }>`
     display: flex;
     justify-content: center;
     align-items: center;
     > svg {
-        width: 1.5rem;
+        width: ${({ small }) => (small ? '1rem' : '1.5rem')};
         color: ${({ active, theme }) => theme.palette.gray[active ? 500 : 200]};
         transition: color 300ms ease-out;
     }
 `;
 
-const Icon = ({ name, active }: IconProps) => {
+const Icon = ({ name, active = false, small = false }: IconProps) => {
     const [iconModule, setIconModule] = useState<{ default: FunctionComponent<SVGAttributes<SVGElement>> } | null>(null);
 
     const getIcon = useCallback(async () => {
@@ -37,7 +38,7 @@ const Icon = ({ name, active }: IconProps) => {
 
     if (!iconModule) {
         return (
-            <IconContainer active={active}>
+            <IconContainer small={small} active={active}>
                 <svg />
             </IconContainer>
         );
@@ -45,7 +46,7 @@ const Icon = ({ name, active }: IconProps) => {
 
     const IconComponent = iconModule.default;
     return (
-        <IconContainer active={active}>
+        <IconContainer small={small} active={active}>
             <IconComponent />
         </IconContainer>
     );
